@@ -4,32 +4,36 @@
   <asx:values>
    <SRVB>
     <METADATA>
-     <NAME>/DMO/UI_CARRIERS_S_O4</NAME>
+     <NAME>/DMO/API_TRAVEL_U_V2</NAME>
      <VERSION>active</VERSION>
-     <DESCRIPTION>Mulit-Inline-Edit Scenario</DESCRIPTION>
+     <DESCRIPTION>Web API for Travel Service</DESCRIPTION>
     </METADATA>
     <CONTENT>
      <BIND_TYPE_IMPL>
-      <NAME>/DMO/UI_CARRIERS_S_O4</NAME>
+      <NAME>/DMO/API_TRAVEL_U_V2</NAME>
      </BIND_TYPE_IMPL>
      <BIND_TYPE>ODATA</BIND_TYPE>
-     <BIND_TYPE_VERSION>V4</BIND_TYPE_VERSION>
+     <BIND_TYPE_CATEGORY>1</BIND_TYPE_CATEGORY>
+     <BIND_TYPE_VERSION>V2</BIND_TYPE_VERSION>
      <SERVICES>
       <item>
-       <SERVICE_NAME>/DMO/UI_CARRIERS_S</SERVICE_NAME>
+       <SERVICE_NAME>/DMO/API_TRAVEL_U_V2</SERVICE_NAME>
        <SERVICE_CONTENT>
         <item>
          <SERVICE_VERSION>0001</SERVICE_VERSION>
+         <RELEASE_STATE>NOT_RELEASED</RELEASE_STATE>
          <SRVD_REF>
-          <URI>/sap/bc/adt/ddic/srvd/sources/%2fdmo%2fui_carriers_s</URI>
+          <URI>/sap/bc/adt/ddic/srvd/sources/%2fdmo%2ftravel_u</URI>
           <TYPE>SRVD/SRV</TYPE>
-          <NAME>/DMO/UI_CARRIERS_S</NAME>
+          <NAME>/DMO/TRAVEL_U</NAME>
          </SRVD_REF>
         </item>
        </SERVICE_CONTENT>
       </item>
      </SERVICES>
     </CONTENT>
+    <CONTRACT>C2</CONTRACT>
+    <RELEASE_SUPPORTED>true</RELEASE_SUPPORTED>
     <BINDING_CREATED>true</BINDING_CREATED>
    </SRVB>
   </asx:values>

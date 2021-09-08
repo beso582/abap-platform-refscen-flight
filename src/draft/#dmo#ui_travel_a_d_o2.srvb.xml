@@ -4,26 +4,26 @@
   <asx:values>
    <SRVB>
     <METADATA>
-     <NAME>/DMO/UI_CARRIERS_S_O4</NAME>
+     <NAME>/DMO/UI_TRAVEL_A_D_O2</NAME>
      <VERSION>active</VERSION>
-     <DESCRIPTION>Mulit-Inline-Edit Scenario</DESCRIPTION>
+     <DESCRIPTION>Service Binding Travel Draft Scenario (active projection)</DESCRIPTION>
     </METADATA>
     <CONTENT>
      <BIND_TYPE_IMPL>
-      <NAME>/DMO/UI_CARRIERS_S_O4</NAME>
+      <NAME>/DMO/UI_TRAVEL_A_D_O2</NAME>
      </BIND_TYPE_IMPL>
      <BIND_TYPE>ODATA</BIND_TYPE>
-     <BIND_TYPE_VERSION>V4</BIND_TYPE_VERSION>
+     <BIND_TYPE_VERSION>V2</BIND_TYPE_VERSION>
      <SERVICES>
       <item>
-       <SERVICE_NAME>/DMO/UI_CARRIERS_S</SERVICE_NAME>
+       <SERVICE_NAME>/DMO/UI_TRAVEL_A_D_O2</SERVICE_NAME>
        <SERVICE_CONTENT>
         <item>
          <SERVICE_VERSION>0001</SERVICE_VERSION>
          <SRVD_REF>
-          <URI>/sap/bc/adt/ddic/srvd/sources/%2fdmo%2fui_carriers_s</URI>
+          <URI>/sap/bc/adt/ddic/srvd/sources/%2fdmo%2fui_travel_a_d</URI>
           <TYPE>SRVD/SRV</TYPE>
-          <NAME>/DMO/UI_CARRIERS_S</NAME>
+          <NAME>/DMO/UI_TRAVEL_A_D</NAME>
          </SRVD_REF>
         </item>
        </SERVICE_CONTENT>
