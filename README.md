@@ -54,8 +54,8 @@ Use the <em>zabapgit_standalone</em> program to install the <em>ABAP Flight Refe
 As a result of the installation procedure above, the ABAP system creates all development objects of the demo content and adds the following sub packages to the target package: 
 * `/DMO/FLIGHT_LEGACY`
 * `/DMO/FLIGHT_REUSE`
-* `/DMO/FLIGHT_REUSE_CARRIER`
-* `/DMO/FLIGHT_REUSE_SUPPLEMENT`
+* `/DMO/FLIGHT_REUSE_CARRIER` - represents a transactional app with multi-inline-edit capabilities (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/f713ec52bcb8405ca9262918cffa5d25.html)).
+* `/DMO/FLIGHT_REUSE_SUPPLEMENT` - represents a transactional app for editing language-dependent fields by means of an augmentation implementation (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/fc374ac9b02e4dbcba356afc77432dc2.html)).
 * `/DMO/FLIGHT_READONLY` - represents a read-only list reporting app (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/504035c0850f44f787f5b81e35791d10.html)).
 * `/DMO/FLIGHT_MANAGED` - represents the transactional app with implementation type <em>managed</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/b5bba99612cf4637a8b72a3fc82c22d9.html)).
 * `/DMO/FLIGHT_UNMANAGED` - represents the transactional app with implementation type <em>unmanaged</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/f6cb3e3402694f5585068e5e5161a7c1.html)).
@@ -98,7 +98,7 @@ To create the missing <em>service bindings</em> for the transactional app with i
 8.	Choose the  `Publish` button in the service binding editor. 
 
 #### Draft Scenario
-To create the missing <em>service bindings</em> for the transactional app with  <em>draft</em> (package `/DMO/FLIGHT_DRAFT`):
+To create the missing <em>service bindings</em> for the transactional app with <em>draft</em> (package `/DMO/FLIGHT_DRAFT`):
 
 1. Right-click the service definition `/DMO/UI_TRAVEL_A_D` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/ba62670e882e4b12aa7f7e545dfebe31.html) for additional information). 
 2. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
@@ -111,6 +111,19 @@ To create the missing <em>service bindings</em> for the transactional app with  
 7. Use `ODATA V2 UI` binding type.
 8.	Choose the  `Publish` button in the service binding editor. 
 
+#### Multi-inline-edit Scenario
+To create the missing <em>service bindings</em> for the multi-inline-edit sceanrio (package `/DMO/FLIGHT_REUSE_CARRIER`):
+
+1. Right-click the service definition `/DMO/UI_Carriers_S` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/ade0637f7c554c229cbfd4dc02c7fcaa.html) for additional information).  
+2. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+3.	Choose the  `Publish` button in the service binding editor. 
+
+#### Augmentation Scenario
+To create the missing <em>service bindings</em> for the augmentation sceanrio (package `/DMO/FLIGHT_REUSE_SUPPLEMENT`):
+
+1. Right-click the service definition `/DMO/UI_Supplement` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/ade0637f7c554c229cbfd4dc02c7fcaa.html) for additional information).  
+2. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+3.	Choose the  `Publish` button in the service binding editor. 
  
 NOTE: The namespace /DMO/ is reserved for the demo content. Apart from the downloaded demo content and the development objects that need to be created to complete the scenario, do not use the namespace /DMO/ and do not create any development objects in the downloaded packages. You can access the development objects in /DMO/ from your own namespace.
 
