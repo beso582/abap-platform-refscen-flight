@@ -63,7 +63,7 @@ As a result of the installation procedure above, the ABAP system creates all dev
 NOTE: The demo packages do not include  <em>service definitions</em> or <em>service bindings</em>. They must be created to complete the services (see configuration section). Then you can run, for example, the UI services with the <em>Fiori Elements</em> preview in the <em>service binding</em>.
 
 ## Configuration
-To fill the demo database tables for the read-only and the unmanaged scenario with sample business data: 
+To fill the demo database tables with sample business data: 
 1. Expand the package structure in the Project Explorer `/DMO/FLIGHT_LEGACY` > `Source Code Library` > `Classes`.
 2. Select the data generator class `/DMO/CL_FLIGHT_DATA_GENERATOR` and press `F9` (Run as Console Application). 
 
