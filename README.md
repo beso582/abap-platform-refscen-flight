@@ -54,93 +54,62 @@ Use the <em>zabapgit_standalone</em> program to install the <em>ABAP Flight Refe
 As a result of the installation procedure above, the ABAP system creates all development objects of the demo content and adds the following sub packages to the target package: 
 * `/DMO/FLIGHT_LEGACY`
 * `/DMO/FLIGHT_REUSE`
-** `/DMO/FLIGHT_REUSE_CARRIER`
-* `/DMO/FLIGHT_READONLY` - represents a read-only list reporting app (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/504035c0850f44f787f5b81e35791d10.html)).
-* `/DMO/FLIGHT_MANAGED` - represents the transactional app with implementation type <em>managed</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/b5bba99612cf4637a8b72a3fc82c22d9.html)).
-* `/DMO/FLIGHT_UNMANAGED` - represents the transactional app with implementation type <em>unmanaged</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/f6cb3e3402694f5585068e5e5161a7c1.html)).
-* `/DMO/FLIGHT_DRAFT` - represents the transactional app with <em>draft</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/71ba2bec1d0d4f22bc344bba6b569f2e.html)).
+* `/DMO/FLIGHT_REUSE_CARRIER`
+* `/DMO/FLIGHT_REUSE_SUPPLEMENT`
+* `/DMO/FLIGHT_READONLY` - represents a read-only list reporting app (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/504035c0850f44f787f5b81e35791d10.html)).
+* `/DMO/FLIGHT_MANAGED` - represents the transactional app with implementation type <em>managed</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/b5bba99612cf4637a8b72a3fc82c22d9.html)).
+* `/DMO/FLIGHT_UNMANAGED` - represents the transactional app with implementation type <em>unmanaged</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/f6cb3e3402694f5585068e5e5161a7c1.html)).
+* `/DMO/FLIGHT_DRAFT` - represents the transactional app with <em>draft</em> (see also: corresponding [end-to-end guide](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/71ba2bec1d0d4f22bc344bba6b569f2e.html)).
 
 
-NOTE: The demo packages do not include  <em>service definitions</em> or <em>service bindings</em>. They must be created to complete the services (see configuration section). Then you can run, for example, the UI services with the <em>Fiori Elements</em> preview in the <em>service binding</em>.
+NOTE: The demo packages do not include <em>service bindings</em>. They must be created to complete the services (see configuration section). Then you can run, for example, the UI services with the <em>Fiori Elements</em> preview in the <em>service binding</em>.
 
 ## Configuration
-To fill the demo database tables for the read-only and the unmanaged scenario with sample business data: 
+To fill the demo database tables with sample business data: 
 1. Expand the package structure in the Project Explorer `/DMO/FLIGHT_LEGACY` > `Source Code Library` > `Classes`.
 2. Select the data generator class `/DMO/CL_FLIGHT_DATA_GENERATOR` and press `F9` (Run as Console Application). 
 
 #### Read-Only Scenario
-To create the missing development objects (<em>service definition</em> and <em>service binding</em>) for the read-only list reporting app (package `/DMO/FLIGHT_READONLY`):
-##### Service Definition
-1. Right-click the CDS entity `/DMO/I_CONNECTION_R` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/ade0637f7c554c229cbfd4dc02c7fcaa.html) for additional information). Use the name `/DMO/FLIGHT_R`.
-2. Include the CDS views that are relevant for the read-only scenario to be exposed in the service definition (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/fb9cb12aebf94852bac4665c2db2a25a.html) for additional information). You can also directly copy the source code from [Service Definition Read-Only /DMO/FLIGHT_R](service_definition_readonly)
-3. Activate the service definition.
+To create the missing <em>service bindings</em> for the read-only list reporting app (package `/DMO/FLIGHT_READONLY`):
 
-##### Service Binding
-4.	Right-click the newly created service definition `/DMO/FLIGHT_R` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/777e027f61c3490dba0433443d9143a6.html) for additional information).  
-5.	Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
-6.	Choose the  `Publish` button in the service binding editor.  
+1.	Right-click the service definition `/DMO/FLIGHT_R` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/777e027f61c3490dba0433443d9143a6.html) for additional information).  
+2.	Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+3.	Choose the  `Publish` button in the service binding editor.  
 
 #### Unmanaged Scenario
-To create the missing development objects (<em>service definition</em> and <em>service binding</em> ) for the transactional app with implementation type <em>unmanaged</em> (package `/DMO/FLIGHT_UNMANAGED`):
-##### Service Definition
-1.	Right-click the CDS root entity `/DMO/I_TRAVEL_U` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/453ff778fd9c4bb0a0b1cd4b19afb8f3.html) for additional information). Use the name `/DMO/TRAVEL_U`.
-2.	Include the CDS views that are relevant for the unmanaged scenario to be exposed in the service definition. You can also directly copy the source code from [Service Definition Unmanaged /DMO/TRAVEL_U](service_definition_unmanaged).
-3.	Activate the service definition. 
+To create the missing <em>service bindings</em> for the transactional app with implementation type <em>unmanaged</em> (package `/DMO/FLIGHT_UNMANAGED`):
 
-
-##### Service Binding
-4. Right-click the service definition `/DMO/TRAVEL_U` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/ade0637f7c554c229cbfd4dc02c7fcaa.html) for additional information).  
-5. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
-6.	Choose the  `Publish` button in the service binding editor.  
+1. Right-click the service definition `/DMO/TRAVEL_U` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/ade0637f7c554c229cbfd4dc02c7fcaa.html) for additional information).  
+2. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+3.	Choose the  `Publish` button in the service binding editor.  
 
 #### Managed Scenario
-To create the missing development objects (<em>service definition</em> and <em>service binding</em> ) for the transactional app with implementation type <em>managed</em> (package `/DMO/FLIGHT_MANAGED`):
-##### Service Definitions
-1.	Right-click the CDS root projection entity `/DMO/C_TRAVEL_PROCESSOR_M` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/3dd07cd970d7433584f1b86588176bf1.html) for additional information). Use the name `/DMO/UI_TRAVEL_PROCESSOR_M`.
-2.	Include the CDS views that are relevant for the processor projection of the managed scenario to be exposed in the service definition. You can also directly copy the source code from [Service Definition Processor Projection /DMO/UI_TRAVEL_PROCESSOR_M](service_definition_managed_processor).
-3.	Activate the service definition. 
+To create the missing <em>service bindings</em> for the transactional app with implementation type <em>managed</em> (package `/DMO/FLIGHT_MANAGED`):
+
+1. Right-click the service definition `/DMO/UI_TRAVEL_PROCESSOR_M` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/3dd07cd970d7433584f1b86588176bf1.html) for additional information). 
+2. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+3. Use `ODATA V2 UI` binding type.
+4.	Choose the  `Publish` button in the service binding editor.   
 
 
-4.	Right-click the CDS root projection entity `/DMO/C_TRAVEL_APPROVER_M` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/3dd07cd970d7433584f1b86588176bf1.html) for additional information). Use the name `/DMO/UI_TRAVEL_APPROVER_M`.
-5.	Include the CDS views that are relevant for the approver projection of the managed scenario to be exposed in the service definition. You can also directly copy the source code from [Service Definition Approver Projection /DMO/UI_TRAVEL_APPROVER_M](service_definition_managed_approver).
-6.	Activate the service definition. 
-
-
-##### Service Bindings
-7. Right-click the service definition `/DMO/UI_TRAVEL_PROCESSOR_M` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/3dd07cd970d7433584f1b86588176bf1.html) for additional information). 
-8. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
-9. Use `ODATA V2 UI` binding type.
-10.	Choose the  `Publish` button in the service binding editor.   
-
-
-11. Right-click the service definition `/DMO/UI_TRAVEL_APPROVER_M` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/3dd07cd970d7433584f1b86588176bf1.html) for additional information). 
-12. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
-13. Use `ODATA V2 UI` binding type.
-14.	Choose the  `Publish` button in the service binding editor. 
+5. Right-click the service definition `/DMO/UI_TRAVEL_APPROVER_M` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/3dd07cd970d7433584f1b86588176bf1.html) for additional information). 
+6. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+7. Use `ODATA V2 UI` binding type.
+8.	Choose the  `Publish` button in the service binding editor. 
 
 #### Draft Scenario
-To create the missing development objects (<em>service definition</em> and <em>service binding</em> ) for the transactional app with  <em>draft</em> (package `/DMO/FLIGHT_DRAFT`):
-##### Service Definitions
-1.	Right-click the CDS root projection entity `/DMO/C_TRAVEL_A_D` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/ba62670e882e4b12aa7f7e545dfebe31.html) for additional information). Use the name `/DMO/UI_TRAVEL_A_D`.
-2.	Include the CDS views that are relevant for the non-draft projection of the draft scenario to be exposed in the service definition. You can also directly copy the source code from [Service Definition Draft Active Projection /DMO/UI_TRAVEL_A_D](service_definition_draft_active_projection).
-3.	Activate the service definition. 
+To create the missing <em>service bindings</em> for the transactional app with  <em>draft</em> (package `/DMO/FLIGHT_DRAFT`):
+
+1. Right-click the service definition `/DMO/UI_TRAVEL_A_D` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/ba62670e882e4b12aa7f7e545dfebe31.html) for additional information). 
+2. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+3. Use `ODATA V2 UI` binding type.
+4.	Choose the  `Publish` button in the service binding editor.   
 
 
-4.	Right-click the CDS root projection entity `/DMO/C_TRAVEL_D_D` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/b10ea0d6cae24a20910bf337c1e5c1cb.html) for additional information). Use the name `/DMO/UI_TRAVEL_D_D`.
-5.	Include the CDS views that are relevant for the draft projection of the draft scenario to be exposed in the service definition. You can also directly copy the source code from [Service Definition Draft Draft Projection /DMO/UI_TRAVEL_D_D](service_definition_draft_draft_projection).
-6.	Activate the service definition. 
-
-##### Service Bindings
-7. Right-click the service definition `/DMO/UI_TRAVEL_A_D` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/ba62670e882e4b12aa7f7e545dfebe31.html) for additional information). 
-8. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
-9. Use `ODATA V2 UI` binding type.
-10.	Choose the  `Publish` button in the service binding editor.   
-
-
-11. Right-click the service definition `/DMO/UI_TRAVEL_D_D` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202009.000/en-US/b10ea0d6cae24a20910bf337c1e5c1cb.html) for additional information). 
-12. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
-13. Use `ODATA V2 UI` binding type.
-14.	Choose the  `Publish` button in the service binding editor. 
+5. Right-click the service definition `/DMO/UI_TRAVEL_D_D` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/202110.000/en-US/b10ea0d6cae24a20910bf337c1e5c1cb.html) for additional information). 
+6. Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
+7. Use `ODATA V2 UI` binding type.
+8.	Choose the  `Publish` button in the service binding editor. 
 
  
 NOTE: The namespace /DMO/ is reserved for the demo content. Apart from the downloaded demo content and the development objects that need to be created to complete the scenario, do not use the namespace /DMO/ and do not create any development objects in the downloaded packages. You can access the development objects in /DMO/ from your own namespace.
@@ -150,6 +119,6 @@ NOTE: The namespace /DMO/ is reserved for the demo content. Apart from the downl
 This project is provided "as-is": there is no guarantee that raised issues will be answered or addressed in future releases.
 
 ## License
-Copyright (c) 2018-2020 SAP SE or an SAP affiliate company. All rights reserved.
+Copyright (c) 2018-2021 SAP SE or an SAP affiliate company. All rights reserved.
 This project is licensed under the SAP Sample Code License except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
 
