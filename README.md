@@ -12,7 +12,7 @@ Make sure to fulfill the following requirements:
 * You are working on Application Server ABAP 7.54 or higher. 
 * You have downloaded and installed ABAP Development Tools (ADT). Make sure to use the most recent version as indicated on the [installation page](https://tools.hana.ondemand.com/#abap). 
 * You have created an ABAP Project in ADT that allows you to access your Application Server as mentioned above. Your log-on language is English.
-* You have downloaded and installed the `zabapgit` report. Make sure to use the most recent version as indicated on the [installation page](https://docs.abapgit.org/). 
+* You have downloaded and installed the `zabapgit_standalone` report. Make sure to use the most recent version as indicated on the [installation page](https://docs.abapgit.org/). 
 * You have installed the certificate files for github.com, see [abapGit Documentation](https://docs.abapgit.org/guide-ssl-setup.html).  
 
 ## Set Up Namespace
@@ -38,16 +38,17 @@ For more information, see [Setting the System Change Option](https://help.sap.co
 
 
 ## Download
-Use the <em>zabapgit</em> to install the <em>ABAP Flight Reference Scenario</em> by executing the following steps:
+Use the <em>zabapgit_standalone</em> to install the <em>ABAP Flight Reference Scenario</em> by executing the following steps:
 1.	In your ABAP project, create the package `/DMO/FLIGHT` as target package for the demo content. Use `HOME` as software component. Assign it to a new transport request that you only use for the demo content import. 
-2.	In your ABAP project, run the program `zabapgit`.  
-3.	Choose `+Online` and enter the following URL of this repository  `https://github.com/SAP/abap-platform-refscen-flight.git`. 
+2.	In your ABAP project, run the program `zabapgit_standalone`.  
+3.	Choose `New Online` and enter the following URL of this repository  `https://github.com/SAP/abap-platform-refscen-flight.git`. 
 4.	In the package field, enter the newly created package `/DMO/FLIGHT`.
 5.	Leave the other fields unchanged and choose `OK`. You will see the available artifacts to import into your ABAP system. 
 6.	To select the on-premise branch, choose `Branch` > `Switch` and select `On-Premise-1909`. 
 7.	Choose `Pull` and confirm every subpackage on your transport request. 
-8.	Select the package `/DMO/FLIGHT` to be overwritten with the demo content and again confirm the transport request. You will get an information screen telling you to only make repairs when they are urgent, which you can confirm.  
-9.	Once the cloning has finished, refresh your project tree.
+8.	Select the package `/DMO/FLIGHT` to be overwritten with the demo content and again confirm the transport request. You will get an information screen telling you to only make repairs when they are urgent, which you can confirm. You can also confirm the dialogue telling you that objects can only be created in the package of the namespace /DMO/.  
+9. In the following screen, select all inactive objects and confirm the activation.
+10.	Once the cloning has finished, refresh your project tree.
 
 
 As a result of the installation procedure above, the ABAP system creates an inactive version of all artifacts from the demo content and adds the following sub packages to the target package: 
@@ -60,23 +61,19 @@ As a result of the installation procedure above, the ABAP system creates an inac
 NOTE: The demo packages do not include <em>behavior definitions</em>, <em>service definitions</em> or <em>service bindings</em>. They must be created to complete the service (see configuration section). Then you can run, for example, the UI services with the <em>Fiori Elements</em> preview in the <em>service binding</em>.
 
 ## Configuration
-To activate all development objects from the `/DMO/FLIGHT` package: 
-1. Click the mass-activation icon (<em>Activate Inactive ABAP Development Objects</em>) in the toolbar.  
-2. In the dialog that appears, select all development objects in the transport request (that you created for the demo content installation) and choose `Activate`.
-
 To fill the demo database tables for the read-only and the unmanaged scenario with sample business data: 
 1. Expand the package structure in the Project Explorer `/DMO/FLIGHT_LEGACY` > `Source Code Library` > `Classes`.
 2. Select the data generator class `/DMO/CL_FLIGHT_DATA_GENERATOR` and press `F9` (Run as Console Application). 
 
 To create the missing development objects (<em>service definition</em> and <em>service binding</em>) for the read-only list reporting app (package `/DMO/FLIGHT_READONLY`):
-##### Service Definititon
+##### Service Definition
 1. Right-click the CDS entity `/DMO/I_CONNECTION_R` and choose `New Service Definition` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/201909.000/en-US/ade0637f7c554c229cbfd4dc02c7fcaa.html) for additional information). Use the name `/DMO/FLIGHT_R`.
 2. Include the CDS views that are relevant for the read-only scenario to be exposed in the service definition (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/201909.000/en-US/fb9cb12aebf94852bac4665c2db2a25a.html) for additional information). You can also directly copy the source code from [Service Definition Read-Only /DMO/FLIGHT_R](service_definition_read_only)
 3. Activate the service definition.
 
 
 ##### Service Binding
-4.	Right-click the newly created service definition `/DMO/FLIGHT_R` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/2019.000/en-US/777e027f61c3490dba0433443d9143a6.html) for additional information).  
+4.	Right-click the newly created service definition `/DMO/FLIGHT_R` and choose `New Service Binding` (see [here](https://help.sap.com/viewer/fc4c71aa50014fd1b43721701471913d/201909.000/en-US/777e027f61c3490dba0433443d9143a6.html) for additional information).  
 5.	Specify your own package and your own namespace when following the steps in the creation wizard. A service binding cannot be created in the namespace <em>/DMO/</em>. 
 6.	Choose the  `Activate` button in the service binding editor.  
 
